@@ -1,0 +1,287 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title|default:"Sagar Bijuli Pasal - Your Local Electrical Experts" }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'LucideIcons';
+            src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
+        }
+        .lucide { font-family: 'LucideIcons'; font-style: normal; font-weight: normal; text-rendering: auto; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: inline-block; vertical-align: middle; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(to bottom, #f3f4f6, #e5e7eb); }
+        .icon-sm { font-size: 1.25rem; }
+        .icon-md { font-size: 1.5rem; }
+        .icon-lg { font-size: 2rem; }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); }
+        .section-fade { opacity: 0; animation: fadeIn 1s ease forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @media (max-width: 768px) {
+            .section-fade { animation: none; opacity: 1; }
+            h1 { font-size: 2.5rem !important; }
+            h2 { font-size: 1.875rem !important; }
+        }
+    </style>
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { 
+                        primary: { DEFAULT: '#0ea5e9', light: '#38bdf8', dark: '#0284c7' },
+                        secondary: { DEFAULT: '#facc15', light: '#fde047', dark: '#eab308' },
+                        accent: '#10b981',
+                        gray: { 100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db', 400: '#9ca3af', 500: '#6b7280', 600: '#4b5563', 700: '#374151', 800: '#1f2937', 900: '#111827' },
+                    } 
+                } 
+            } 
+        }
+    </script>
+</head>
+<body class="text-gray-800">
+    <header class="bg-gradient-to-r from-white to-gray-100 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="{% url 'shop:index' %}" class="text-3xl font-bold text-primary-dark flex items-center transition-transform duration-300 hover:scale-105">
+                <span class="lucide icon-md mr-2 animate-pulse">•</span> Sagar Bijuli Pasal
+            </a>
+            <div class="hidden md:flex space-x-6 items-center" id="nav-links">
+                <a href="#home" class="text-gray-600 hover:text-primary-dark font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100">Home</a>
+                <a href="#products" class="text-gray-600 hover:text-primary-dark font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100">Products</a>
+                <a href="#services" class="text-gray-600 hover:text-primary-dark font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100">Services</a>
+                <a href="#team" class="text-gray-600 hover:text-primary-dark font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100">Our Team</a>
+                <a href="#about" class="text-gray-600 hover:text-primary-dark font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100">About Us</a>
+                <a href="#contact" class="bg-gradient-to-r from-primary to-blue-600 hover:from-primary-dark hover:to-blue-700 text-white font-semibold py-2 px-5 rounded-lg transition duration-300 shadow-md hover:shadow-lg">Contact Us</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none p-2">
+                <span class="lucide icon-md">•</span>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute top-full left-0 right-0 z-40 border-t border-gray-200 transform transition-all duration-300 ease-in-out -translate-y-full">
+            <a href="#home" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-dark transition duration-300">Home</a>
+            <a href="#products" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-dark transition duration-300">Products</a>
+            <a href="#services" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-dark transition duration-300">Services</a>
+            <a href="#team" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-dark transition duration-300">Our Team</a>
+            <a href="#about" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-dark transition duration-300">About Us</a>
+            <a href="#contact" class="block px-6 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-dark transition duration-300 font-semibold">Contact Us</a>
+        </div>
+    </header>
+
+    <section id="home" class="bg-gradient-to-r from-primary to-blue-600 pt-28 pb-32 text-white text-center relative overflow-hidden section-fade">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 z-0 pointer-events-none">
+            <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#fff" fill-opacity="0.3" d="M0,160L48,144C96,128,192,96,288,112C384,128,480,192,576,208C672,224,768,192,864,176C960,160,1056,160,1152,144C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <span class="lucide icon-lg mb-6 inline-block text-secondary animate-bounce"></span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight">Your Trusted Electrical Partner</h1>
+            <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-blue-100 font-light">Quality products and expert services for Tokha and beyond.</p>
+            <a href="#services" class="bg-gradient-to-r from-secondary to-yellow-400 hover:from-secondary-dark hover:to-yellow-500 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl text-lg transform hover:scale-105 hover:ring-4 hover:ring-secondary-light/50">Explore Services</a>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 lg:py-24 bg-white section-fade">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">Our Expert Services</h2>
+            <p class="text-center text-gray-600 mb-12 lg:mb-16 max-w-xl mx-auto">Safe, reliable, and professional solutions for all your electrical needs.</p>
+            {% if services %}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                {% for service in services %}
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-xl shadow-lg text-center card-hover border-l-4 border-primary">
+                    <span class="lucide icon-lg text-secondary mb-6 inline-block transition-transform duration-300 hover:transform.scale(1.1)"></span>
+                    <h3 class="text-xl font-semibold mb-4 text-primary-dark">{{ service.name }}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{{ service.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-center text-gray-500">No services listed yet. Stay tuned!</p>
+            {% endif %}
+            <div class="text-center mt-12 lg:mt-16">
+                <a href="#contact" class="bg-gradient-to-r from-primary to-blue-600 hover:from-primary-dark hover:to-blue-700 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105">Request a Service</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-20 lg:py-24 bg-gray-100 section-fade">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">Featured Products</h2>
+            <p class="text-center text-gray-600 mb-12 lg:mb-16 max-w-xl mx-auto">Discover our top electrical essentials.</p>
+            {% if products %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                {% for product in products %}
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover flex flex-col relative group">
+                    {% if product.featured %}
+                    <span class="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">Featured</span>
+                    {% endif %}
+                    <div class="relative overflow-hidden">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-110" onerror="this.src='https://placehold.co/300x200/e0f2fe/0ea5e9?text=Image+Not+Found'">
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-lg font-semibold mb-2 text-primary-dark">{{ product.name }}</h3>
+                        {% if product.category %}
+                        <p class="text-xs text-gray-500 mb-3">{{ product.category.name }}</p>
+                        {% endif %}
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">{{ product.description|truncatewords:15 }}</p>
+                        {% if product.price %}
+                        <p class="text-lg font-bold text-accent mt-auto">NPR {{ product.price|floatformat:2 }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-center text-gray-500">No products available right now.</p>
+            {% endif %}
+            <div class="text-center mt-12 lg:mt-16">
+                <a href="#contact" class="text-primary hover:text-primary-dark font-semibold transition duration-300 transform.scale(1.1)">Need something specific? Contact us! <span class="lucide"><svg class="w-6 h-6 text-blue-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg></span></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-20 lg:py-24 bg-white section-fade">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">Meet Our Expert Team</h2>
+            <p class="text-center text-gray-600 mb-12 lg:mb-16 max-w-xl mx-auto">Skilled professionals ready to assist you.</p>
+            {% if electricians %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+                {% for electrician in electricians %}
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg text-center card-hover transition-transform duration-300 hover:transform.scale(1.1)">
+                    <div class="relative w-32 h-32 mx-auto mb-6">
+                        <img src="{{ electrician.photo.url }}" alt="{{ electrician.name }}" class="w-full h-full rounded-full object-cover border-4 border-gradient-to-r from-primary to-accent shadow-md">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-primary-dark">{{ electrician.name }}</h3>
+                    {% if electrician.specialization %}
+                    <p class="text-sm text-secondary-dark font-medium mb-3">Specialization: {{ electrician.specialization }}</p>
+                    {% endif %}
+                    <p class="text-sm text-secondary-dark font-medium mb-3">Phone: {{ electrician.contact }}</p>
+
+                    <p class="text-gray-600 text-sm leading-relaxed">{{ electrician.bio|truncatewords:20 }}</p>
+                </div>
+                {% endfor %}
+               
+            </div>
+            {% else %}
+            <p class="text-center text-gray-500">Team details coming soon!</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section id="about" class="py-20 lg:py-24 bg-gray-100 section-fade">
+        <div class="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center gap-12 lg:gap-16">
+            <div class="md:w-1/2">
+                <img src="https://placehold.co/500x350/dbeafe/0ea5e9?text=Our+Shop+in+Tokha" alt="About Sagar Bijuli Pasal" class="rounded-xl shadow-xl w-full transform transition-transform duration-500 hover:transform.scale(1.1)">
+            </div>
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">About Sagar Bijuli Pasal</h2>
+                <p class="text-gray-700 mb-5 leading-relaxed">
+                    Established in <span class="text-primary-dark font-semibold">[2062]</span>, we’ve been serving <span class="font-semibold text-primary-dark">Tokha, Bagmati</span> with premium electrical products and expert services.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Our mission is to deliver safety, reliability, and satisfaction with every project. Visit us for trusted solutions!
+                </p>
+                <a href="#contact" class="mt-6 inline-block text-primary hover:text-primary-dark font-semibold transition duration-300 group">
+                    Get in Touch <span class="lucide inline-block group-hover:translate-x-2 transition-transform duration-300"><svg class="w-6 h-6 text-blue-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 lg:py-24 bg-white section-fade">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Get in Touch</h2>
+            <div class="flex flex-col md:flex-row gap-12 lg:gap-16">
+                <div class="md:w-1/2 bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <div class="flex justify-center mb-6">
+                        <img src="{% static 'shop/logo.png' %}" alt="Sagar Bijuli Pasal Logo" class="h-16 w-auto transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-6 text-primary-dark text-center">Contact Us Instantly</h3>
+                    <p class="text-gray-600 mb-8 text-center">Reach out via your preferred method— we're here to help!</p>
+                    <div class="space-y-6">
+                        <a href="https://wa.me/+9779841770084" target="_blank" class="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                            <span class="lucide icon-md mr-3"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                                <path d="M 25 2 C 12.318 2 2 12.318 2 25 C 2 28.96 3.0228906 32.853062 4.9628906 36.289062 L 2.0371094 46.730469 C 1.9411094 47.073469 2.03325 47.440312 2.28125 47.695312 C 2.47225 47.892313 2.733 48 3 48 C 3.08 48 3.1612344 47.989703 3.2402344 47.970703 L 14.136719 45.271484 C 17.463719 47.057484 21.21 48 25 48 C 37.682 48 48 37.682 48 25 C 48 12.318 37.682 2 25 2 z M 16.642578 14 C 17.036578 14 17.428437 14.005484 17.773438 14.021484 C 18.136437 14.039484 18.624516 13.883484 19.103516 15.021484 C 19.595516 16.189484 20.775875 19.058563 20.921875 19.351562 C 21.069875 19.643563 21.168656 19.984047 20.972656 20.373047 C 20.776656 20.762047 20.678813 21.006656 20.382812 21.347656 C 20.086813 21.688656 19.762094 22.107141 19.496094 22.369141 C 19.200094 22.660141 18.892328 22.974594 19.236328 23.558594 C 19.580328 24.142594 20.765484 26.051656 22.521484 27.597656 C 24.776484 29.583656 26.679531 30.200188 27.269531 30.492188 C 27.859531 30.784188 28.204828 30.734703 28.548828 30.345703 C 28.892828 29.955703 30.024969 28.643547 30.417969 28.060547 C 30.810969 27.477547 31.204094 27.572578 31.746094 27.767578 C 32.288094 27.961578 35.19125 29.372062 35.78125 29.664062 C 36.37125 29.956063 36.766062 30.102703 36.914062 30.345703 C 37.062062 30.587703 37.062312 31.754234 36.570312 33.115234 C 36.078313 34.477234 33.717984 35.721672 32.583984 35.888672 C 31.565984 36.037672 30.277281 36.10025 28.863281 35.65625 C 28.006281 35.38625 26.907047 35.028734 25.498047 34.427734 C 19.575047 31.901734 15.706156 26.012047 15.410156 25.623047 C 15.115156 25.234047 13 22.46275 13 19.59375 C 13 16.72475 14.524406 15.314469 15.066406 14.730469 C 15.608406 14.146469 16.248578 14 16.642578 14 z"></path>
+                                </svg></span> Message us on WhatsApp
+                        </a>
+                        <a href="https://m.me/sagar.bijulipasal" target="_blank" class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                            <span class="lucide icon-md mr-3"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 30 30">
+                                <path d="M15,3C8.373,3,3,8.373,3,15c0,6.016,4.432,10.984,10.206,11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475,1.693-5,4.581-5 c1.383,0,2.115,0.103,2.461,0.149v2.753h-1.97c-1.226,0-1.654,1.163-1.654,2.473v1.724h3.593L19.73,18.18h-3.106v8.697 C22.481,26.083,27,21.075,27,15C27,8.373,21.627,3,15,3z"></path>
+                            </svg></span> Chat on Facebook Messenger
+                        </a>
+                        <a href="https://www.instagram.com/sagar.bijulipasal" target="_blank" class="flex items-center justify-center bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                            <span class="lucide icon-md mr-3"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                                <path d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"></path>
+                            </svg></span> Follow us on Instagram
+                        </a>
+                        <a href="tel:+9779841770084" class="flex items-center justify-center bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-6 rounded-full transition duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                            <span class="lucide icon-md mr-3"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                                <path d="M 14 3.9902344 C 8.4886661 3.9902344 4 8.4789008 4 13.990234 L 4 35.990234 C 4 41.501568 8.4886661 45.990234 14 45.990234 L 36 45.990234 C 41.511334 45.990234 46 41.501568 46 35.990234 L 46 13.990234 C 46 8.4789008 41.511334 3.9902344 36 3.9902344 L 14 3.9902344 z M 18.005859 12.033203 C 18.633859 12.060203 19.210594 12.414031 19.558594 12.957031 C 19.954594 13.575031 20.569141 14.534156 21.369141 15.785156 C 22.099141 16.926156 22.150047 18.399844 21.498047 19.589844 L 20.033203 21.673828 C 19.637203 22.237828 19.558219 22.959703 19.824219 23.595703 C 20.238219 24.585703 21.040797 26.107203 22.466797 27.533203 C 23.892797 28.959203 25.414297 29.761781 26.404297 30.175781 C 27.040297 30.441781 27.762172 30.362797 28.326172 29.966797 L 30.410156 28.501953 C 31.600156 27.849953 33.073844 27.901859 34.214844 28.630859 C 35.465844 29.430859 36.424969 30.045406 37.042969 30.441406 C 37.585969 30.789406 37.939797 31.366141 37.966797 31.994141 C 38.120797 35.558141 35.359641 37.001953 34.556641 37.001953 C 34.000641 37.001953 27.316344 37.761656 19.777344 30.222656 C 12.238344 22.683656 12.998047 15.999359 12.998047 15.443359 C 12.998047 14.640359 14.441859 11.879203 18.005859 12.033203 z"></path>
+                                </svg></span> Call +977 984-177-0084
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg mb-8">
+                        <h3 class="text-2xl font-semibold mb-6 text-primary-dark">Shop Information</h3>
+                        <div class="space-y-6 text-gray-700">
+                            <p class="flex items-start">
+                                <span class="lucide text-primary mr-4 mt-1 flex-shrink-0">•</span>
+                                <span>Tokha Municipality-6<br>Tokha, Bagmati Province, Nepal</span>
+                            </p>
+                            <p class="flex items-start">
+                                <span class="lucide text-primary mr-4 mt-1 flex-shrink-0">•</span>
+                                <span><span class="font-medium">Opening Hours:</span><br>Everyday: 7:00 AM - 9:00 PM</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-200 h-72 md:h-64 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-102 border-2 border-primary/20">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.56811399239!2d85.3182953742779!3d27.73674477624141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a8a9933333%3A0x9a5924991c8dcfb2!2sSagar%20Bijuli%20Pasal!5e0!3m2!1sen!2snp!4v1712178189797!5m2!1sen!2snp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Location of Sagar Bijuli Pasal"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gradient-to-b from-gray-800 to-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <div class="mb-6 flex justify-center space-x-6">
+                <a href="https://m.me/sagar.bijulipasal" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><span class="lucide icon-md"></span></a>
+                <a href="https://www.instagram.com/sagar.bijulipasal" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><span class="lucide icon-md"></span></a>
+                <a href="https://wa.me/+9779841770084" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><span class="lucide icon-md"></span></a>
+            </div>
+            <div class="mb-5">
+                <a href="#home" class="hover:text-white transition duration-300 mx-3 px-3 py-1">Home</a> |
+                <a href="#products" class="hover:text-white transition duration-300 mx-3 px-3 py-1">Products</a> |
+                <a href="#services" class="hover:text-white transition duration-300 mx-3 px-3 py-1">Services</a> |
+                <a href="#team" class="hover:text-white transition duration-300 mx-3 px-3 py-1">Team</a> |
+                <a href="#about" class="hover:text-white transition duration-300 mx-3 px-3 py-1">About</a> |
+                <a href="#contact" class="hover:text-white transition duration-300 mx-3 px-3 py-1">Contact</a>
+            </div>
+            <p class="text-sm">© {% now "Y" %} Sagar Bijuli Pasal. All Rights Reserved.</p>
+            <p class="text-xs text-gray-500 mt-2">Serving Tokha, Bagmati Province, Nepal</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'shop/js/main.js' %}"></script>
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('-translate-y-full');
+            menu.classList.toggle('translate-y-0');
+        });
+    </script>
+</body>
+</html>
