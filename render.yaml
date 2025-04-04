@@ -3,7 +3,7 @@ services:
     name: sagar-bijuli
     env: python
     buildCommand: chmod +x build.sh && ./build.sh
-    startCommand: gunicorn electric_shop_project.wsgi:application
+    startCommand: gunicorn electric_shop_project.wsgi:application --bind 0.0.0.0:$PORT --workers 4 --threads 8 --timeout 0
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -13,5 +13,9 @@ services:
         generateValue: true
       - key: DJANGO_DEBUG
         value: false
-      - key: WEB_CONCURRENCY
-        value: 4 
+      - key: PORT
+        value: 8000
+      - key: DJANGO_LOG_LEVEL
+        value: INFO
+      - key: PYTHONUNBUFFERED
+        value: true 
