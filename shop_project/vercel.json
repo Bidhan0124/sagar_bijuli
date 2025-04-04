@@ -6,13 +6,15 @@
         "use": "@vercel/python",
         "config": {
           "maxLambdaSize": "15mb",
-          "runtime": "python3.11", 
-          "wsgi": "electric_shop_project.wsgi:application"
+          "runtime": "python3.11"
         }
       },
       {
-        "src": "static/**",
-        "use": "@vercel/static"
+        "src": "build_files.sh",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "staticfiles"
+        }
       }
     ],
     "routes": [
@@ -21,8 +23,12 @@
         "dest": "/static/$1"
       },
       {
+        "src": "/media/(.*)",
+        "dest": "/media/$1"
+      },
+      {
         "src": "/(.*)",
         "dest": "vercel_app.py"
       }
     ]
-  }
+}
